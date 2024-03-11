@@ -57,6 +57,7 @@
           >
             <DialogPanel
               class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              :style="{ backgroundColor: bg }"
             >
               <form class="mt-2" @submit.prevent="handleSubmitEditForm">
                 <div class="mb-2">
@@ -70,6 +71,7 @@
                     spellcheck="false"
                     autofocus
                     v-model="titleEdit"
+                    :style="{ backgroundColor: bg }"
                   />
                 </div>
                 <textarea
@@ -81,11 +83,12 @@
                   rows="5"
                   spellcheck="false"
                   v-model="contentEdit"
+                  :style="{ backgroundColor: bg }"
                 />
                 <div class="mt-4">
                   <button
                     type="submit"
-                    class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    class="bg-black text-white px-3 py-1 rounded-sm text-base"
                     @click="closeModal"
                   >
                     Apply

@@ -16,7 +16,11 @@
 </template>
 
 <script>
+import TodoCard from "@components/TodoCard/TodoCard.vue";
 export default {
+  components: {
+    TodoCard,
+  },
   props: {
     todos: Array,
     trashes: Array,

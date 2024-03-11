@@ -1,18 +1,27 @@
 import { createApp } from "vue";
+// import { createRouter, createWebHistory } from "vue-router";
 import "./styles/main.scss";
 import App from "./App.vue";
 import Container from "./components/Container/Container.vue";
-import TodoInputForm from "./components/TodoInputForm/TodoInputForm.vue";
-import TodoList from "./components/TodoList/TodoList.vue";
-import TodoCard from "./components/TodoCard/TodoCard.vue";
-import TrashList from "./components/TrashList/TrashList.vue";
+import { store } from "./store/notes";
+
+// const router = createRouter({
+//   history: createWebHistory(),
+//   routes: [
+//     {
+//       path: "/",
+//       component: TodoList,
+//     },
+//     {
+//       path: "/trash",
+//       component: TrashList,
+//     },
+//   ],
+// });
 
 const app = createApp(App);
-
+// app.use(router);
+app.use(store);
 app.component("Container", Container);
-app.component("TodoInputForm", TodoInputForm);
-app.component("TodoList", TodoList);
-app.component("TodoCard", TodoCard);
-app.component("TrashList", TrashList);
 
 app.mount("#app");
