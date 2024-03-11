@@ -1,8 +1,8 @@
 <template>
-  <div v-if="todos.length === 0" class="py-5">No Todos Found</div>
+  <div v-if="$store.state.todos.length === 0" class="py-5">No Notes Found</div>
   <div v-else class="grid grid-cols-6 gap-3">
     <TodoCard
-      v-for="todo of todos"
+      v-for="todo of $store.state.todos"
       :id="todo.id"
       :bg="todo.bg"
       :title="todo.title"
@@ -21,23 +21,13 @@ export default {
   components: {
     TodoCard,
   },
-  props: {
-    todos: Array,
-    trashes: Array,
-  },
   methods: {
     trashNote(noteId) {
-      const indexToRemove = this.todos.findIndex((item) => item.id === noteId);
-      if (indexToRemove !== -1) {
-        this.todos[indexToRemove].isTrash = true;
-        this.trashes.push(this.todos.splice(indexToRemove, 1)[0]);
-      }
+      this.$store.commit("removeTodoNote", noteId);
     },
     editNote(noteId, data) {
-      const indexToEdit = this.todos.findIndex((item) => item.id === noteId);
-      if (indexToEdit !== -1) {
-        this.todos.splice(indexToEdit, 1, data);
-      }
+      const payload = { noteId, data };
+      this.$store.commit("updateNote", payload);
     },
   },
 };

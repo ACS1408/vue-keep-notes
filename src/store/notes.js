@@ -1,6 +1,5 @@
 import { createStore } from "vuex";
 
-// Create a new store instance.
 export const store = createStore({
   state() {
     return {
@@ -25,5 +24,38 @@ export const store = createStore({
       trashes: [],
     };
   },
-  mutations: {},
+  mutations: {
+    addNote(state, payload) {
+      state.todos.push(payload);
+    },
+    updateNote(state, payload) {
+      console.log(state, payload);
+      const indexToEdit = state.todos.findIndex(
+        (item) => item.id === payload.noteId
+      );
+      if (indexToEdit !== -1) {
+        state.todos.splice(indexToEdit, 1, payload.data);
+      }
+    },
+    removeTodoNote(state, id) {
+      const indexToRemove = state.todos.findIndex((item) => item.id === id);
+      if (indexToRemove !== -1) {
+        state.todos[indexToRemove].isTrash = true;
+        state.trashes.push(state.todos.splice(indexToRemove, 1)[0]);
+      }
+    },
+    removeTrashNote(state, id) {
+      const indexToRemove = state.trashes.findIndex((item) => item.id === id);
+      if (indexToRemove !== -1) {
+        state.trashes.splice(indexToRemove, 1);
+      }
+    },
+    restoreNote(state, id) {
+      const indexToRestore = state.trashes.findIndex((item) => item.id === id);
+      if (indexToRestore !== -1) {
+        state.trashes[indexToRestore].isTrash = false;
+        state.todos.push(state.trashes.splice(indexToRestore, 1)[0]);
+      }
+    },
+  },
 });

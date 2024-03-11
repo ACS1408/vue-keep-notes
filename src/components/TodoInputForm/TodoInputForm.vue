@@ -1,5 +1,8 @@
 <template>
-  <form class="rounded-lg border px-4 pt-2 pb-3" @submit.prevent="handleSubmitTodo">
+  <form
+    class="rounded-lg border px-4 pt-2 pb-3"
+    @submit.prevent="handleSubmitTodo"
+  >
     <div class="mb-2">
       <input
         type="text"
@@ -33,9 +36,6 @@
 
 <script>
 export default {
-  props: {
-    todos: Array,
-  },
   data() {
     return {
       title: "",
@@ -73,8 +73,7 @@ export default {
           title: this.title,
           content: this.content,
         };
-
-        this.todos.push(data);
+        this.$store.commit("addNote", data);
         this.$refs.titleInput.value = "";
         this.$refs.contentInput.value = "";
       }

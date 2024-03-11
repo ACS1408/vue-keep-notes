@@ -1,27 +1,20 @@
 <template>
-  <section class="py-6">
+  <section class="py-16">
     <Container>
       <h2 class="font-semibold text-xl text-black mb-5">
-        Trash ({{ trashes?.length }})
+        Trash ({{ $store.state.trashes.length }})
       </h2>
-      <TrashList :todos="todos" :trashes="trashes" />
+      <TrashList />
     </Container>
   </section>
 </template>
 
   <script>
 import TrashList from "@components/TrashList/TrashList.vue";
-import { store } from "@store/notes";
 
 export default {
   components: {
     TrashList,
-  },
-  data() {
-    return {
-      todos: store.state.todos,
-      trashes: store.state.trashes,
-    };
   },
 };
 </script>

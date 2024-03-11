@@ -10,6 +10,7 @@ export default defineConfig({
       "@components": resolve(__dirname, "src/components"),
       "@pages": resolve(__dirname, "src/pages"),
       "@store": resolve(__dirname, "src/store"),
+      "@styles": resolve(__dirname, "src/styles"),
       // Add more aliases as needed
     },
   },
