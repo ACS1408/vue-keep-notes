@@ -20,6 +20,14 @@ export const store = createStore({
             "Id id nisi sint excepteur. Incididunt pariatur proident mollit duis deserunt laboris consequat nisi dolor fugiat. Eu ullamco ad cillum eiusmod proident officia proident amet.",
           isTrash: false,
         },
+        {
+          id: 3,
+          bg: "#fff8b8",
+          title: "Trash/delete notes",
+          content:
+            "Irure elit est anim excepteur ut magna in aliquip dolor elit nisi amet labore eiusmod. Et culpa nulla do do ullamco tempor aliqua et ad ex eu quis occaecat do. Incididunt pariatur proident mollit duis deserunt laboris consequat nisi dolor fugiat. Eu ullamco ad cillum eiusmod proident officia proident amet.",
+          isTrash: false,
+        },
       ],
       trashes: [],
     };

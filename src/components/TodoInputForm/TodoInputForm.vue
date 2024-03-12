@@ -25,12 +25,14 @@
       spellcheck="false"
       @input="handleContentChange"
     />
-    <button
-      type="submit"
-      class="bg-black text-white px-3 py-1 rounded-sm text-base"
-    >
-      Add Notes
-    </button>
+    <div class="flex justify-end">
+      <button
+        type="submit"
+        class="bg-black text-white px-3 py-1 rounded-sm text-base"
+      >
+        Add Notes
+      </button>
+    </div>
   </form>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-lg p-4 pb-5 relative flex flex-col"
+    class="rounded-lg p-4 pb-5 relative flex flex-col h-max"
     :style="{ backgroundColor: bg }"
   >
     <div class="mb-2">
@@ -85,11 +85,21 @@
                   v-model="contentEdit"
                   :style="{ backgroundColor: bg }"
                 />
-                <div class="mt-4">
+                <div class="mt-4 flex gap-2 justify-end">
+                  <button
+                    type="button"
+                    class="bg-transparent border border-black text-black px-5 py-1 rounded-sm text-base min-w-[100px]"
+                    @click="
+                      cancelEdit();
+                      closeModal();
+                    "
+                  >
+                    Cancel
+                  </button>
                   <button
                     type="submit"
-                    class="bg-black text-white px-3 py-1 rounded-sm text-base"
-                    @click="closeModal"
+                    class="bg-black text-white px-5 py-1 rounded-sm text-base min-w-[100px]"
+                    @click="titleEdit || contentEdit ? closeModal() : null"
                   >
                     Apply
                   </button>
@@ -130,14 +140,20 @@ export default {
       this.$emit("restore-note", this.id);
     },
     handleSubmitEditForm() {
-      const data = {
-        id: this.id,
-        bg: this.bg,
-        title: this.$refs.titleInput.value,
-        content: this.$refs.contentInput.value,
-      };
+      if (this.$refs.titleInput.value || this.$refs.contentInput.value) {
+        const data = {
+          id: this.id,
+          bg: this.bg,
+          title: this.$refs.titleInput.value,
+          content: this.$refs.contentInput.value,
+        };
 
-      this.$emit("edit-note", this.id, data);
+        this.$emit("edit-note", this.id, data);
+      }
+    },
+    cancelEdit() {
+      this.titleEdit = this.title;
+      this.contentEdit = this.content;
     },
   },
 };
